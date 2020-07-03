@@ -1,4 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Crwn Clothing
+This is a full e-commerce app develop using React with Hooks, Redux, GraphQL, ContextAPI and Stripe.
 
 ## Available Scripts
 
