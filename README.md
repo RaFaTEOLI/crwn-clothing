@@ -1,8 +1,10 @@
 ## Crwn Clothing
+
 This is a full e-commerce app develop using React with Hooks, Redux, GraphQL, ContextAPI and Stripe.
 
 Live Preview (in development)
 https://rafateoli-crwn-clothing.netlify.app/
+https://rafateoli-crwn-clothing.herokuapp.com/
 
 ## Available Scripts
 
