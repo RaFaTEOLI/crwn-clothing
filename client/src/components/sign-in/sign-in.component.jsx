@@ -38,7 +38,7 @@ const SignIn = props => {
           type="email"
           handleChange={e => setEmail(e.target.value)}
           value={email}
-          label="email"
+          label="Email"
           required
         />
         <FormInput
@@ -46,7 +46,7 @@ const SignIn = props => {
           type="password"
           value={password}
           handleChange={e => setPassword(e.target.value)}
-          label="password"
+          label="Password"
           required
         />
         <ButtonsBarContainer>
