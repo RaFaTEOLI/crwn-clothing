@@ -20,7 +20,7 @@ import {
   OptionLink,
 } from './header.styles';
 
-const Header = ({ currentUser, hidden, clearCart }) => {
+export const Header = ({ currentUser, hidden, clearCart }) => {
   const userSignOut = () => {
     auth.signOut();
     clearCart();
