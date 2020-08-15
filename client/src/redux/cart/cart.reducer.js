@@ -4,6 +4,10 @@ import { addItemToCart, removeItemFromCart } from './cart.utils';
 const INITIAL_STATE = {
   hidden: true,
   cartItems: [],
+  isFetching: false,
+  isUpdating: false,
+  errorMessage: undefined,
+  updateErrorMessage: undefined,
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -29,6 +33,39 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         cartItems: state.cartItems.filter(
           cartItem => cartItem.id !== action.payload.id
         ),
+      };
+    case CartActionTypes.FETCH_CART_START:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case CartActionTypes.FETCH_CART_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        cartItems: action.payload,
+      };
+    case CartActionTypes.FETCH_CART_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload,
+      };
+    case CartActionTypes.UPDATE_CART_START:
+      return {
+        ...state,
+        isUpdating: true,
+      };
+    case CartActionTypes.UPDATE_CART_SUCCESS:
+      return {
+        ...state,
+        isUpdating: false,
+      };
+    case CartActionTypes.UPDATE_CART_FAILURE:
+      return {
+        ...state,
+        isUpdating: false,
+        updateErrorMessage: action.payload,
       };
     case CartActionTypes.CLEAR_CART:
       return {

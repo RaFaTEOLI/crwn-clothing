@@ -17,6 +17,11 @@ import {
 
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
+import { selectCartItems } from './redux/cart/cart.selectors';
+import {
+  fetchCartStartAsync,
+  updateCartStartAsync,
+} from './redux/cart/cart.actions';
 // import { selectCollectionForPreview } from './redux/shop/shop.selectors';
 
 const HomePage = lazy(() => import('./pages/homepage/homepage.component'));
@@ -26,7 +31,13 @@ const SignInAndSignUpPage = lazy(() =>
 );
 const CheckoutPage = lazy(() => import('./pages/checkout/checkout.component'));
 
-const App = ({ setCurrentUser, currentUser }) => {
+const App = ({
+  setCurrentUser,
+  currentUser,
+  cartItems,
+  fetchCartStartAsync,
+  updateCartStartAsync,
+}) => {
   useEffect(() => {
     const unsubscriberFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
@@ -51,6 +62,21 @@ const App = ({ setCurrentUser, currentUser }) => {
       };
     });
   }, [setCurrentUser]);
+
+  // Updates User's Cart In Firebase Whenever The Items Change
+  useEffect(() => {
+    updateCartStartAsync(cartItems, currentUser);
+  }, [updateCartStartAsync, cartItems, currentUser]);
+
+  // Fetchs the cart items from firebase
+  useEffect(() => {
+    const initializeCart = () => {
+      if (currentUser) {
+        fetchCartStartAsync(currentUser.id);
+      }
+    };
+    initializeCart();
+  }, [fetchCartStartAsync, currentUser]);
 
   return (
     <div>
@@ -78,11 +104,16 @@ const App = ({ setCurrentUser, currentUser }) => {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
+  cartItems: selectCartItems,
   // collectionsArray: selectCollectionForPreview,
 });
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
+  updateCartStartAsync: (cartItems, currentUser) =>
+    dispatch(updateCartStartAsync(cartItems, currentUser)),
+  fetchCartStartAsync: currentUser =>
+    dispatch(fetchCartStartAsync(currentUser)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
