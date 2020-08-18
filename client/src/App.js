@@ -30,6 +30,7 @@ const SignInAndSignUpPage = lazy(() =>
   import('./pages/sign-in-and-sign-up/sign-in-and-sign-up.component')
 );
 const CheckoutPage = lazy(() => import('./pages/checkout/checkout.component'));
+const ContactPage = lazy(() => import('./pages/contact/contact.component'));
 
 const App = ({
   setCurrentUser,
@@ -88,6 +89,7 @@ const App = ({
             <Route exact path="/" component={HomePage} />
             <Route path="/shop" component={ShopPage} />
             <Route exact path="/checkout" component={CheckoutPage} />
+            <Route exact path="/contact" component={ContactPage} />
             <Route
               exact
               path="/signin"
