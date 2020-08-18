@@ -1,8 +1,8 @@
-## Crwn Clothing
+## 👑 Crwn Clothing 👕
 
 This is a full e-commerce app develop using React with Hooks, Redux, GraphQL, Redux Sagas, ContextAPI and Stripe.
 
-Live Preview (in development)
+Live Preview
 
 https://rafateoli-crwn-clothing.herokuapp.com/
 
