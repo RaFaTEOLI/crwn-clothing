@@ -4,7 +4,7 @@ This is a full e-commerce app develop using React with Hooks, Redux, GraphQL, Re
 
 Live Preview
 
-https://rafateoli-crwn-clothing.netlify.app/
+http://crwn-clothing.herokuapp.com/
 
 ## Available Scripts
 
