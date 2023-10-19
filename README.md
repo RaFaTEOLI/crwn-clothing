@@ -2,10 +2,6 @@
 
 This is a full e-commerce app develop using React with Hooks, Redux, GraphQL, Redux Sagas, ContextAPI and Stripe.
 
-Live Preview
-
-http://crwn-clothing.herokuapp.com/
-
 ## Available Scripts
 
 In the project directory, you can run:
